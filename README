@@ -1,0 +1,5 @@
+Generate twitter-bootstrap form output for django form
+
+{% load bootstrap %}
+
+{{ form|bootstrape }}
