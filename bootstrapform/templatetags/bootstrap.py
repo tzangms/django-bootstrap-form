@@ -6,7 +6,7 @@ register = template.Library()
 
 @register.filter
 def bootstrap(form):
-    template = get_template("bootstrap_form/form.html")
+    template = get_template("bootstrapform/form.html")
     context = Context({'form': form})
     return template.render(context)
 
