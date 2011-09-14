@@ -6,4 +6,4 @@ usage:
 
 {% load bootstrap %}
 
-{{ form|bootstrape }}
+{{ form|bootstrap }}
