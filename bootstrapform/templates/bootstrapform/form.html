@@ -22,6 +22,9 @@
             {{ field.label_tag }}
             <div class="input">
                 {{ field }}
+                <span class="help-block">
+                {{ field.help_text }}
+                </span>
                 {% if field.errors %}
                     {% for error in field.errors %}
                         <span class="help-inline">{{ error }}</span>
