@@ -15,6 +15,9 @@
                         <label>
                             {{ field }} <span>{{ field.label }}</span>
                         </label>
+                        {% for error in field.errors %}
+                            <span class="help-inline">{{ error }}</span>
+                        {% endfor %}
                     </div>
                 </li>
             </ul>
