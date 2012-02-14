@@ -1,11 +1,21 @@
+=====================
+Django bootatrap form
+=====================
+
 Generate twitter-bootstrap form output for django form
 
 A django template tag to work with twitter bootstrap ( http://twitter.github.com/bootstrap/ )
 
-Installation:
+
+Installation
+============
+
 Add 'bootstrapform' to INSTALLED_APPS.
 
-Template usage:
+
+Usage
+=====
+
 {% load bootstrap %}
 
 {{ form|bootstrap }}
