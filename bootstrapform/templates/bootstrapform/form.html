@@ -7,12 +7,10 @@
 {% endfor %}
 
 {% for field in form.visible_fields %}
-    <div class="clearfix{% if field.errors %} error{% endif %}">
+    <div class="control-group{% if field.errors %} error{% endif %}">
         {% if field|is_checkbox %}
-            <ul class="inputs-list">
-                <li>
-                    <div class="input">
-                        <label>
+                    <div class="controls">
+                        <label class="checkbox">
                             {{ field }} <span>{{ field.label }}</span>
                         </label>
 
@@ -21,16 +19,15 @@
                         {% endfor %}
 
                         {% if field.help_text %}
-                        <span class="help-block">
+                        <p class="help-block">
                             {{ field.help_text }}
-                        </span>
+                        </p>
                         {% endif %}
                     </div>
-                </li>
-            </ul>
         {% else %}
-            {{ field.label_tag }}
-            <div class="input">
+            <div class="control-label">{{ field.label }}</div>
+
+            <div class="controls">
                 {{ field }}
 
                 {% for error in field.errors %}
@@ -38,9 +35,9 @@
                 {% endfor %}
 
                 {% if field.help_text %}
-                <span class="help-block">
+                <p class="help-block">
                     {{ field.help_text }}
-                </span>
+                </p>
                 {% endif %}
 
             </div>

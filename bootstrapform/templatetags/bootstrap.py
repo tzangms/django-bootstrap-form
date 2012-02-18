@@ -13,3 +13,8 @@ def bootstrap(form):
 @register.filter
 def is_checkbox(field):
     return field.field.widget.__class__.__name__.lower() == "checkboxinput"
+
+
+@register.filter
+def is_radio(field):
+    return field.field.widget.__class__.__name__.lower() == "radioselect"
