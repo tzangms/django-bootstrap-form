@@ -5,9 +5,9 @@ from django import template
 register = template.Library()
 
 @register.filter
-def bootstrap(form):
+def bootstrap(form, legend=None):
     template = get_template("bootstrapform/form.html")
-    context = Context({'form': form})
+    context = Context({'form': form, 'legend': legend})
     return template.render(context)
 
 @register.filter
