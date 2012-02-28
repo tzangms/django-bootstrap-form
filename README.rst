@@ -10,6 +10,19 @@ A django template tag to work with twitter bootstrap ( http://twitter.github.com
 Installation
 ============
 
+
+``$ pip install django-bootstrap-form``
+
+for people who still use older version before twitter bootstrap 2.0
+
+
+``$ pip install django-bootstrap-form==0.2``
+
+
+
+Configuration
+==============
+
 Add 'bootstrapform' to INSTALLED_APPS.
 
 
