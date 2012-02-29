@@ -32,3 +32,5 @@ Usage
 {% load bootstrap %}
 
 {{ form|bootstrap }}
+
+{{ form.<field name>|bootstrap }} - To output individual fields

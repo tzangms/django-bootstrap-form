@@ -5,9 +5,15 @@ from django import template
 register = template.Library()
 
 @register.filter
-def bootstrap(form):
-    template = get_template("bootstrapform/form.html")
-    context = Context({'form': form})
+def bootstrap(element):
+    element_type = element.__class__.__name__.lower()
+    if element_type == 'boundfield':
+        template = get_template("bootstrapform/field.html")
+        context = Context({'field': element})
+    else:
+        template = get_template("bootstrapform/form.html")
+        context = Context({'form': element})
+        
     return template.render(context)
 
 @register.filter
