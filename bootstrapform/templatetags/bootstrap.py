@@ -7,12 +7,19 @@ register = template.Library()
 @register.filter
 def bootstrap(element):
     element_type = element.__class__.__name__.lower()
+
     if element_type == 'boundfield':
         template = get_template("bootstrapform/field.html")
         context = Context({'field': element})
     else:
-        template = get_template("bootstrapform/form.html")
-        context = Context({'form': element})
+        has_management = getattr(element, 'management_form', None)
+        print "has management", has_management
+        if has_management:
+            template = get_template("bootstrapform/formset.html")
+            context = Context({'formset': element})
+        else:
+            template = get_template("bootstrapform/form.html")
+            context = Context({'form': element})
         
     return template.render(context)
 
