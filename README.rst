@@ -13,8 +13,8 @@ Installation
 
 ``$ pip install django-bootstrap-form``
 
-for people who still use older version before twitter bootstrap 2.0
 
+for people who still use older version before twitter bootstrap 2.0
 
 ``$ pip install django-bootstrap-form==0.2``
 
