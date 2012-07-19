@@ -13,7 +13,6 @@ def bootstrap(element):
         context = Context({'field': element})
     else:
         has_management = getattr(element, 'management_form', None)
-        print "has management", has_management
         if has_management:
             template = get_template("bootstrapform/formset.html")
             context = Context({'formset': element})
