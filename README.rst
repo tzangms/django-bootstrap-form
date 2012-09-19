@@ -1,5 +1,5 @@
 =====================
-Django bootatrap form
+Django bootstrap form
 =====================
 
 Generate twitter-bootstrap form output for django form
