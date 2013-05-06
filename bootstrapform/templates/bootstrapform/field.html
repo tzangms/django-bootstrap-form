@@ -1,21 +1,41 @@
 {% load bootstrap %}
 <div class="control-group{% if field.errors %} error{% endif %}{% if field.field.required %} required{% endif %}">
     {% if field|is_checkbox %}
-                <div class="controls">
-                    <label class="checkbox">
-                        {{ field }} <span>{{ field.label }}</span>
-                    </label>
+        <div class="controls">
+            <label class="checkbox">
+                {{ field }} <span>{{ field.label }}</span>
+            </label>
 
-                    {% for error in field.errors %}
-                        <span class="help-inline">{{ error }}</span>
-                    {% endfor %}
+            {% for error in field.errors %}
+                <span class="help-inline">{{ error }}</span>
+            {% endfor %}
 
-                    {% if field.help_text %}
-                    <p class="help-block">
-                        {{ field.help_text|safe }}
-                    </p>
-                    {% endif %}
-                </div>
+            {% if field.help_text %}
+            <p class="help-block">
+                {{ field.help_text|safe }}
+            </p>
+            {% endif %}
+        </div>
+    {% else %}{% if field|is_radio %}
+        <label class="control-label">{{ field.label }}</label>
+        <div class="controls">
+            {% for choice in field %}
+                <label class="radio">
+                    {{ choice.tag }}
+                    {{ choice.choice_label }}
+                </label>
+            {% endfor %}
+
+            {% for error in field.errors %}
+                <span class="help-inline">{{ error }}</span>
+            {% endfor %}
+
+            {% if field.help_text %}
+            <p class="help-block">
+                {{ field.help_text|safe }}
+            </p>
+            {% endif %}
+        </div>
     {% else %}
         <label class="control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
 
@@ -33,5 +53,5 @@
             {% endif %}
 
         </div>
-    {% endif %}
+    {% endif %}{% endif %}
 </div>
