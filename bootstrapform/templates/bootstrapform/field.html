@@ -17,11 +17,12 @@
             {% endif %}
         </div>
     {% else %}{% if field|is_radio %}
+        <label class="control-label">{{ field.label }}</label>
         <div class="controls">
-            {% for _radiobtn in field %}
+            {% for choice in field %}
                 <label class="radio">
-                    {{ _radiobtn.choice_label }}
-                    <span class="radio">{{ _radiobtn.tag }}</span>
+                    {{ choice.tag }}
+                    {{ choice.choice_label }}
                 </label>
             {% endfor %}
 
