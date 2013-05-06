@@ -18,9 +18,12 @@
         </div>
     {% else %}{% if field|is_radio %}
         <div class="controls">
-            <label class="radio">
-                {{ field }} <span>{{ field.label }}</span>
-            </label>
+            {% for _radiobtn in field %}
+                <label class="radio">
+                    {{ _radiobtn.choice_label }}
+                    <span class="radio">{{ _radiobtn.tag }}</span>
+                </label>
+            {% endfor %}
 
             {% for error in field.errors %}
                 <span class="help-inline">{{ error }}</span>
