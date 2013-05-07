@@ -10,7 +10,7 @@ Welcome to django bootstrap form's documentation!
    :maxdepth: 2
 
 
-.. include:: ../README.rst
+.. include:: install.rst
 
 
 Indices and tables
