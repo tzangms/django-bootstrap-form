@@ -17,7 +17,7 @@
             {% endif %}
         </div>
     {% else %}{% if field|is_radio %}
-        <label>{{ field.label }}</label>
+        <label class="control-label">{{ field.label }}</label>
 
         <div class="radio">
             {% for choice in field %}
@@ -39,7 +39,7 @@
         </div>
 
     {% else %}
-        <label for="{{ field.auto_id }}">{{ field.label }}</label>
+        <label class="control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
 
         {{ field }}
 
