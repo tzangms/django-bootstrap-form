@@ -7,8 +7,8 @@ register = template.Library()
 @register.filter
 def bootstrap(element):
     markup_classes = {'label': '', 'value': '', 'single_value': ''}
-
     render(element, markup_classes)
+
 
 @register.filter
 def bootstrap_horizontal(element, label_cols={}):
@@ -40,16 +40,19 @@ def bootstrap_horizontal(element, label_cols={}):
 
     return render(element, markup_classes)
 
-import sys
+
+def add_input_classes(field):
+    if not is_checkbox(field):
+        field_classes = field.field.widget.attrs.get('class', '')
+        field_classes += ' form-control'
+        field.field.widget.attrs['class'] = field_classes
+
 
 def render(element, markup_classes):
     element_type = element.__class__.__name__.lower()
 
     if element_type == 'boundfield':
-        field_classes = element.field.widget.attrs.get('class', '')
-        field_classes += ' form-control'
-        element.field.widget.attrs['class'] = field_classes
-
+        add_input_classes(element)
         template = get_template("bootstrapform/field.html")
         context = Context({'field': element, 'classes': markup_classes})
     else:
@@ -57,17 +60,13 @@ def render(element, markup_classes):
         if has_management:
             for form in element.forms:
                 for field in form.visible_fields():
-                    field_classes = field.field.widget.attrs.get('class', '')
-                    field_classes += ' form-control'
-                    field.field.widget.attrs['class'] = field_classes
+                    add_input_classes(field)
 
             template = get_template("bootstrapform/formset.html")
             context = Context({'formset': element, 'classes': markup_classes})
         else:
             for field in element.visible_fields():
-                field_classes = field.field.widget.attrs.get('class', '')
-                field_classes += ' form-control'
-                field.field.widget.attrs['class'] = field_classes
+                add_input_classes(field)
 
             template = get_template("bootstrapform/form.html")
             context = Context({'form': element, 'classes': markup_classes})
