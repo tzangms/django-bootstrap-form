@@ -7,7 +7,7 @@ register = template.Library()
 @register.filter
 def bootstrap(element):
     markup_classes = {'label': '', 'value': '', 'single_value': ''}
-    render(element, markup_classes)
+    return render(element, markup_classes)
 
 
 @register.filter
