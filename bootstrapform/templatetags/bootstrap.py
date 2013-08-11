@@ -42,7 +42,7 @@ def bootstrap_horizontal(element, label_cols={}):
 
 
 def add_input_classes(field):
-    if not is_checkbox(field):
+    if not is_checkbox(field) and not is_multiple_checkbox(field):
         field_classes = field.field.widget.attrs.get('class', '')
         field_classes += ' form-control'
         field.field.widget.attrs['class'] = field_classes
@@ -73,9 +73,15 @@ def render(element, markup_classes):
 
     return template.render(context)
 
+
 @register.filter
 def is_checkbox(field):
     return field.field.widget.__class__.__name__.lower() == "checkboxinput"
+
+
+@register.filter
+def is_multiple_checkbox(field):
+    return field.field.widget.__class__.__name__.lower() == "checkboxselectmultiple"
 
 
 @register.filter
