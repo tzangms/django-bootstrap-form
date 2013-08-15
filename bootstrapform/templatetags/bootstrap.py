@@ -11,6 +11,12 @@ def bootstrap(element):
 
 
 @register.filter
+def bootstrap_inline(element):
+    markup_classes = {'label': 'sr-only', 'value': '', 'single_value': ''}
+    return render(element, markup_classes)
+
+
+@register.filter
 def bootstrap_horizontal(element, label_cols={}):
     if not label_cols:
         label_cols = 'col-sm-2 col-lg-2'
