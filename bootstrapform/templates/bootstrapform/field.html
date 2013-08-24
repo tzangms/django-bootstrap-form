@@ -23,24 +23,24 @@
         <label class="control-label {{ classes.label }}">{{ field.label }}</label>
 
         <div class="{{ classes.value }}">
-            <div class="radio">
-                {% for choice in field %}
-                    <label class="radio">
+            {% for choice in field %}
+                <div class="radio">
+                    <label>
                         {{ choice.tag }}
                         {{ choice.choice_label }}
                     </label>
-                {% endfor %}
+                </div>
+            {% endfor %}
 
-                {% for error in field.errors %}
-                    <span class="help-block">{{ error }}</span>
-                {% endfor %}
+            {% for error in field.errors %}
+                <span class="help-block">{{ error }}</span>
+            {% endfor %}
 
-                {% if field.help_text %}
-                <p class="help-block">
-                    {{ field.help_text|safe }}
-                </p>
-                {% endif %}
-            </div>
+            {% if field.help_text %}
+            <p class="help-block">
+                {{ field.help_text|safe }}
+            </p>
+            {% endif %}
         </div>
 
     {% else %}
