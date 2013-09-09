@@ -48,7 +48,8 @@ def bootstrap_horizontal(element, label_cols={}):
 
 
 def add_input_classes(field):
-    if not is_checkbox(field) and not is_multiple_checkbox(field) and not is_radio(field):
+    if not is_checkbox(field) and not is_multiple_checkbox(field) and not is_radio(field) \
+        and not is_file(field):
         field_classes = field.field.widget.attrs.get('class', '')
         field_classes += ' form-control'
         field.field.widget.attrs['class'] = field_classes
@@ -93,3 +94,8 @@ def is_multiple_checkbox(field):
 @register.filter
 def is_radio(field):
     return field.field.widget.__class__.__name__.lower() == "radioselect"
+
+
+@register.filter
+def is_file(field):
+    return field.field.widget.__class__.__name__.lower() == "clearablefileinput"
