@@ -4,10 +4,11 @@
     {% if field|is_checkbox %}
         <div class="{{ classes.single_value }}">
             <div class="checkbox">
+                {% if field.auto_id %}
                 <label>
                     {{ field }} <span>{{ field.label }}</span>
                 </label>
-
+                {% endif %}
                 {% for error in field.errors %}
                     <span class="help-block">{{ error }}</span>
                 {% endfor %}
@@ -20,8 +21,9 @@
             </div>
         </div>
     {% else %}{% if field|is_radio %}
-        <label class="control-label {{ classes.label }}">{{ field.label }}</label>
-
+        {% if field.auto_id %}
+            <label class="control-label {{ classes.label }}">{{ field.label }}</label>
+        {% endif %}
         <div class="{{ classes.value }}">
             {% for choice in field %}
                 <div class="radio">
@@ -44,8 +46,9 @@
         </div>
 
     {% else %}
-        <label class="control-label {{ classes.label }}" for="{{ field.auto_id }}">{{ field.label }}</label>
-
+        {% if field.auto_id %}
+            <label class="control-label {{ classes.label }}" for="{{ field.auto_id }}">{{ field.label }}</label>
+        {% endif %}
         <div class="{{ classes.value }}">
             {{ field }}
 
