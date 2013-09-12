@@ -63,7 +63,7 @@ CHANGELOG
 
 - 2013-8-27:
 
-  Add support for Bootstrap 3, contributed by `Nivl<https://github.com/Nivl>`_
+  Add support for Bootstrap 3, contributed by `Nivl <https://github.com/Nivl>`_
 
 
 - 2013-5-7:
