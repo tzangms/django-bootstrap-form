@@ -1,3 +1,7 @@
 *.pyc
 .DS_Store
 docs/_build
+build/
+dist/
+django_bootstrap_form.egg-info/
+
