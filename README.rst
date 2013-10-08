@@ -22,3 +22,9 @@ CHANGELOG
 - 2013-5-7:
 
   Add `radio` support for ChoiceField
+
+
+.. image:: https://d2weczhvl823v0.cloudfront.net/tzangms/django-bootstrap-form/trend.png
+   :alt: Bitdeli badge
+   :target: https://bitdeli.com/free
+
