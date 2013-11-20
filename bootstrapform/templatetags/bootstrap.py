@@ -7,13 +7,13 @@ register = template.Library()
 @register.filter
 def bootstrap(element, label=True):
     markup_classes = {'label': '', 'value': '', 'single_value': ''}
-    return render(element, markup_classes)
+    return render(element, markup_classes, label)
 
 
 @register.filter
 def bootstrap_inline(element, label=True):
     markup_classes = {'label': 'sr-only', 'value': '', 'single_value': ''}
-    return render(element, markup_classes)
+    return render(element, markup_classes, label)
 
 
 @register.filter
@@ -44,7 +44,7 @@ def bootstrap_horizontal(element, label_cols={}, label=True):
 
         markup_classes['value'] += ' ' + '-'.join(splited_class)
 
-    return render(element, markup_classes)
+    return render(element, markup_classes, label)
 
 
 def add_input_classes(field):
