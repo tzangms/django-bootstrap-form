@@ -1,7 +1,9 @@
 {% load bootstrap %}
 
 <div class="form-group{% if field.errors %} has-error{% endif %}">
-    {% if field|is_checkbox %}
+    {% if field|is_hidden %}
+	{{ field }}
+    {% elif field|is_checkbox %}
         <div class="{{ classes.single_value }}">
             <div class="checkbox">
                 {% if field.auto_id %}

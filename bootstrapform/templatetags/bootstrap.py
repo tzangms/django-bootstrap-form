@@ -93,3 +93,7 @@ def is_multiple_checkbox(field):
 @register.filter
 def is_radio(field):
     return field.field.widget.__class__.__name__.lower() == "radioselect"
+
+@register.filter
+def is_hidden(field):
+    return field.field.widget.__class__.__name__.lower() == "hiddeninput"
