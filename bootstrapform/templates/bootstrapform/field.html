@@ -5,12 +5,12 @@
         <div class="{{ classes.single_value }}">
             <div class="checkbox">
                 {% if field.auto_id %}
-                <label>
-                    {{ field }} <span>{{ field.label }}</span>
-                </label>
+                    <label {% if field.field.required and form.required_css_class %}class="{{ form.required_css_class }}"{% endif %}>
+                        {{ field }} <span>{{ field.label }}</span>
+                    </label>
                 {% endif %}
                 {% for error in field.errors %}
-                    <span class="help-block">{{ error }}</span>
+                    <span class="help-block {{ form.error_css_class }}">{{ error }}</span>
                 {% endfor %}
 
                 {% if field.help_text %}
@@ -20,9 +20,9 @@
                 {% endif %}
             </div>
         </div>
-    {% else %}{% if field|is_radio %}
+    {% elif field|is_radio %}
         {% if field.auto_id %}
-            <label class="control-label {{ classes.label }}">{{ field.label }}</label>
+            <label class="control-label {{ classes.label }} {% if field.field.required %}{{ form.required_css_class }}{% endif %}">{{ field.label }}</label>
         {% endif %}
         <div class="{{ classes.value }}">
             {% for choice in field %}
@@ -35,7 +35,7 @@
             {% endfor %}
 
             {% for error in field.errors %}
-                <span class="help-block">{{ error }}</span>
+                <span class="help-block {{ form.error_css_class }}">{{ error }}</span>
             {% endfor %}
 
             {% if field.help_text %}
@@ -44,16 +44,16 @@
             </p>
             {% endif %}
         </div>
-
     {% else %}
         {% if field.auto_id %}
-            <label class="control-label {{ classes.label }}" for="{{ field.auto_id }}">{{ field.label }}</label>
+            <label class="control-label {{ classes.label }} {% if field.field.required %}{{ form.required_css_class }}{% endif %}" for="{{ field.auto_id }}">{{ field.label }}</label>
         {% endif %}
-        <div class="{{ classes.value }}">
+
+        <div class="{{ classes.value }} {% if field|is_multiple_checkbox %}multiple-checkbox{% endif %}">
             {{ field }}
 
             {% for error in field.errors %}
-                <span class="help-block">{{ error }}</span>
+                <span class="help-block {{ form.error_css_class }}">{{ error }}</span>
                 {% endfor %}
 
             {% if field.help_text %}
@@ -62,5 +62,5 @@
                 </p>
             {% endif %}
         </div>
-    {% endif %}{% endif %}
+    {% endif %}
 </div>
