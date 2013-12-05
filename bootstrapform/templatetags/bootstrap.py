@@ -1,3 +1,4 @@
+from django import forms
 from django.template import Context
 from django.template.loader import get_template
 from django import template
@@ -83,19 +84,19 @@ def render(element, markup_classes):
 
 @register.filter
 def is_checkbox(field):
-    return field.field.widget.__class__.__name__.lower() == "checkboxinput"
+    return isinstance(field.field.widget, forms.CheckboxInput)
 
 
 @register.filter
 def is_multiple_checkbox(field):
-    return field.field.widget.__class__.__name__.lower() == "checkboxselectmultiple"
+    return isinstance(field.field.widget, forms.CheckboxSelectMultiple)
 
 
 @register.filter
 def is_radio(field):
-    return field.field.widget.__class__.__name__.lower() == "radioselect"
+    return isinstance(field.field.widget, forms.RadioSelect)
 
 
 @register.filter
 def is_file(field):
-    return field.field.widget.__class__.__name__.lower() == "clearablefileinput"
+    return isinstance(field.field.widget, forms.FileInput)
