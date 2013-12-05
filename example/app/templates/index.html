@@ -2,31 +2,63 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8"0>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
         <title>Bootstrap form example</title>
 
     </head>
     <body>
         <div class="container">
-            <h1>Bootstrap form example</h1>
-            <hr />
-
             <div class="row">
                 <div class="span12">
-                    <form class="form-horizontal">
+                    <h1>Bootstrap form example</h1>
+
+                    <p>below demostate how the form looks with bootstrap</p>
+                </div>
+            </div>
+
+            <!-- basic example -->
+            <div class="row">
+                <div class="span12">
+                    <h2>Basic example</h2>
+
+                    <hr />
+
+                    <form class="form" role="form">
                         {{ form|bootstrap }}
-                        <div class="form-actions">
-                            <input type="submit" class="btn btn-primary" value="Submit" />
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="button" class="btn btn-primary" value="Submit" />
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
+
+
+            <!-- horizontal form -->
+            <div class="row">
+                <div class="span12">
+                    <h2>Horizontal form</h2>
+
+                    <hr />
+
+                    <form class="form-horizontal" role="form">
+                        {{ form|bootstrap_horizontal }}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="button" class="btn btn-primary" value="Submit" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
 
         <!-- scripts -->
         <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     </body>
 </html>
