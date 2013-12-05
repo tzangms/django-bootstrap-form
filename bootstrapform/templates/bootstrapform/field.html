@@ -6,7 +6,7 @@
             <div class="checkbox">
                 {% if field.auto_id %}
                 <label>
-                    {{ field }} <span>{{ field.label }}</span>
+                    {{ field }} {% if label %}<span>{{ field.label }}</span>{% endif %}
                 </label>
                 {% endif %}
                 {% for error in field.errors %}
@@ -22,7 +22,7 @@
         </div>
     {% else %}{% if field|is_radio %}
         {% if field.auto_id %}
-            <label class="control-label {{ classes.label }}">{{ field.label }}</label>
+            {% if label %}<label class="control-label {{ classes.label }}">{{ field.label }}</label>{% endif %}
         {% endif %}
         <div class="{{ classes.value }}">
             {% for choice in field %}
@@ -47,7 +47,7 @@
 
     {% else %}
         {% if field.auto_id %}
-            <label class="control-label {{ classes.label }}" for="{{ field.auto_id }}">{{ field.label }}</label>
+            {% if label %}<label class="control-label {{ classes.label }}" for="{{ field.auto_id }}">{{ field.label }}</label>{% endif %}
         {% endif %}
         <div class="{{ classes.value }}">
             {{ field }}

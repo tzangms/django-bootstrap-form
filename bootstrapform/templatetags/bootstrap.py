@@ -5,19 +5,19 @@ from django import template
 register = template.Library()
 
 @register.filter
-def bootstrap(element):
+def bootstrap(element, label=True):
     markup_classes = {'label': '', 'value': '', 'single_value': ''}
-    return render(element, markup_classes)
+    return render(element, markup_classes, label)
 
 
 @register.filter
-def bootstrap_inline(element):
+def bootstrap_inline(element, label=True):
     markup_classes = {'label': 'sr-only', 'value': '', 'single_value': ''}
-    return render(element, markup_classes)
+    return render(element, markup_classes, label)
 
 
 @register.filter
-def bootstrap_horizontal(element, label_cols={}):
+def bootstrap_horizontal(element, label_cols={}, label=True):
     if not label_cols:
         label_cols = 'col-sm-2 col-lg-2'
 
@@ -44,7 +44,7 @@ def bootstrap_horizontal(element, label_cols={}):
 
         markup_classes['value'] += ' ' + '-'.join(splited_class)
 
-    return render(element, markup_classes)
+    return render(element, markup_classes, label)
 
 
 def add_input_classes(field):
@@ -54,13 +54,13 @@ def add_input_classes(field):
         field.field.widget.attrs['class'] = field_classes
 
 
-def render(element, markup_classes):
+def render(element, markup_classes, label=True):
     element_type = element.__class__.__name__.lower()
 
     if element_type == 'boundfield':
         add_input_classes(element)
         template = get_template("bootstrapform/field.html")
-        context = Context({'field': element, 'classes': markup_classes})
+        context = Context({'field': element, 'classes': markup_classes, 'label': label})
     else:
         has_management = getattr(element, 'management_form', None)
         if has_management:
