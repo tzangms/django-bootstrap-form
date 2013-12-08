@@ -16,6 +16,10 @@ setup(
     author_email='tzangms@gmail.com',
     url='http://github.com/tzangms/django-bootstrap-form',
     license='BSD',
+    test_suite='tests',
+    install_requires = [
+        "django>=1.3",
+    ],
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
