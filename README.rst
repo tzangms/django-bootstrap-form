@@ -11,14 +11,15 @@ Django bootstrap form
    :target: https://pypi.python.org/pypi/django-bootstrap-form
 
 
-Generate twitter-bootstrap form output for django form
+Twitter Bootstrap for Django Form.
 
-A simple Django template tag to work with twitter bootstrap ( http://twitter.github.com/bootstrap/ )
+A simple Django template tag to work with `Bootstrap <http://twitter.github.com/bootstrap/>`_
 
 Use it like this
 
 .. code-block::
 
    {{ form|bootstrap }}
+   
 
-`Read the Docs <https://django-bootstrap-form.readthedocs.org/en/latest/>`_
+Checkout this `Demo site <http://django-bootstrap-form.herokuapp.com/>`_ to see it in action. 
