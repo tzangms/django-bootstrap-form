@@ -39,14 +39,29 @@ class BootstrapTemplateTagTests(TestCase):
     def setUp(self):
         call_command('syncdb', interactive=False)
 
-    def test_bootstrap_tag(self):
+    def test_basic_form(self):
         form = ExampleForm()
 
         html = Template("{% load bootstrap %}{{ form|bootstrap }}").render(Context({'form': form}))
 
-        image = os.path.join('fixtures', 'basic.html')
-        with open(os.path.join(TEST_DIR, image)) as f:
+        tpl = os.path.join('fixtures', 'basic.html')
+        with open(os.path.join(TEST_DIR, tpl)) as f:
             content = f.read()
 
-        self.maxDiff = None
+        with open('/tmp/basic.html', 'w+') as f:
+            f.write(html)
+
+        self.maxDiff = True
+        self.assertHTMLEqual(html, content)
+
+    def test_horizontal_form(self):
+        form = ExampleForm()
+
+        html = Template("{% load bootstrap %}{{ form|bootstrap_horizontal }}").render(Context({'form': form}))
+
+        tpl = os.path.join('fixtures', 'horizontal.html')
+        with open(os.path.join(TEST_DIR, tpl)) as f:
+            content = f.read()
+
+        self.maxDiff = True
         self.assertHTMLEqual(html, content)
