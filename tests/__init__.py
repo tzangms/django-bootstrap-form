@@ -48,10 +48,6 @@ class BootstrapTemplateTagTests(TestCase):
         with open(os.path.join(TEST_DIR, tpl)) as f:
             content = f.read()
 
-        with open('/tmp/basic.html', 'w+') as f:
-            f.write(html)
-
-        self.maxDiff = True
         self.assertHTMLEqual(html, content)
 
     def test_horizontal_form(self):
@@ -63,5 +59,4 @@ class BootstrapTemplateTagTests(TestCase):
         with open(os.path.join(TEST_DIR, tpl)) as f:
             content = f.read()
 
-        self.maxDiff = True
         self.assertHTMLEqual(html, content)
