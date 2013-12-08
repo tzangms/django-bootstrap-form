@@ -38,3 +38,4 @@ TEMPLATE_DIRS = (
     local_path('templates'),
 )
 
+SECRET_KEY = 'django-bootstrap-form'
