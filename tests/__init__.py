@@ -43,9 +43,7 @@ class BootstrapTemplateTagTests(TestCase):
         form = ExampleForm()
 
         html = Template("{% load bootstrap %}{{ form|bootstrap }}").render(Context({'form': form}))
-
-        with open('/tmp/basic.html', 'w+') as f:
-            f.write(html)
+        html = html.strip('\n').strip(' ')
 
         image = os.path.join('fixtures', 'basic.html')
         with open(os.path.join(TEST_DIR, image)) as f:
