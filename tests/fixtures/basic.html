@@ -1,5 +1,10 @@
 
 
+
+
+
+    
+
 <div class="form-group">
     
         
@@ -7,7 +12,7 @@
         
 
         <div class=" ">
-            <input id="id_char_field" type="text" class=" form-control" name="char_field" />
+            <input class=" form-control" id="id_char_field" name="char_field" type="text" />
 
             
 
@@ -26,7 +31,7 @@
         
 
         <div class=" ">
-            <select id="id_choice_field" class=" form-control" name="choice_field">
+            <select class=" form-control" id="id_choice_field" name="choice_field">
 <option value="0">Zero</option>
 <option value="1">One</option>
 <option value="2">Two</option>
@@ -51,21 +56,21 @@
             
                 <div class="radio">
                     <label>
-                        <input type="radio" name="radio_choice" value="0" />
+                        <input name="radio_choice" type="radio" value="0" />
                         Zero
                     </label>
                 </div>
             
                 <div class="radio">
                     <label>
-                        <input type="radio" name="radio_choice" value="1" />
+                        <input name="radio_choice" type="radio" value="1" />
                         One
                     </label>
                 </div>
             
                 <div class="radio">
                     <label>
-                        <input type="radio" name="radio_choice" value="2" />
+                        <input name="radio_choice" type="radio" value="2" />
                         Two
                     </label>
                 </div>
@@ -88,7 +93,7 @@
         
 
         <div class=" ">
-            <select multiple="multiple" id="id_multiple_choice" class=" form-control" name="multiple_choice">
+            <select multiple="multiple" class=" form-control" id="id_multiple_choice" name="multiple_choice">
 <option value="0">Zero</option>
 <option value="1">One</option>
 <option value="2">Two</option>
@@ -111,10 +116,10 @@
         
 
         <div class=" multiple-checkbox">
-            <ul>
-<li><label for="id_multiple_checkbox_0"><input type="checkbox" name="multiple_checkbox" value="0" id="id_multiple_checkbox_0" /> Zero</label></li>
-<li><label for="id_multiple_checkbox_1"><input type="checkbox" name="multiple_checkbox" value="1" id="id_multiple_checkbox_1" /> One</label></li>
-<li><label for="id_multiple_checkbox_2"><input type="checkbox" name="multiple_checkbox" value="2" id="id_multiple_checkbox_2" /> Two</label></li>
+            <ul id="id_multiple_checkbox">
+<li><label for="id_multiple_checkbox_0"><input id="id_multiple_checkbox_0" name="multiple_checkbox" type="checkbox" value="0" /> Zero</label></li>
+<li><label for="id_multiple_checkbox_1"><input id="id_multiple_checkbox_1" name="multiple_checkbox" type="checkbox" value="1" /> One</label></li>
+<li><label for="id_multiple_checkbox_2"><input id="id_multiple_checkbox_2" name="multiple_checkbox" type="checkbox" value="2" /> Two</label></li>
 </ul>
 
             
@@ -134,7 +139,7 @@
         
 
         <div class=" ">
-            <input type="file" name="file_fied" id="id_file_fied" />
+            <input id="id_file_fied" name="file_fied" type="file" />
 
             
 
@@ -153,7 +158,7 @@
         
 
         <div class=" ">
-            <input id="id_password_field" type="password" class=" form-control" name="password_field" />
+            <input class=" form-control" id="id_password_field" name="password_field" type="password" />
 
             
 
@@ -172,7 +177,8 @@
         
 
         <div class=" ">
-            <textarea id="id_textarea" rows="10" cols="40" name="textarea" class=" form-control"></textarea>
+            <textarea class=" form-control" cols="40" id="id_textarea" name="textarea" rows="10">
+</textarea>
 
             
 
@@ -190,7 +196,7 @@
             <div class="checkbox">
                 
                     <label >
-                        <input type="checkbox" name="boolean_field" id="id_boolean_field" /> <span>Boolean field</span>
+                        <input id="id_boolean_field" name="boolean_field" type="checkbox" /> <span>Boolean field</span>
                     </label>
                 
                 
@@ -200,3 +206,5 @@
         </div>
     
 </div>
+
+

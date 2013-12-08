@@ -8,7 +8,7 @@ parent = os.path.dirname(os.path.dirname(
 
 sys.path.insert(0, parent)
 
-from unittest import TestCase
+from django.test import TestCase
 from django.template import Template, Context
 from django.core.management import call_command
 from django import forms
@@ -43,10 +43,10 @@ class BootstrapTemplateTagTests(TestCase):
         form = ExampleForm()
 
         html = Template("{% load bootstrap %}{{ form|bootstrap }}").render(Context({'form': form}))
-        html = html.strip('\n').strip(' ')
 
         image = os.path.join('fixtures', 'basic.html')
         with open(os.path.join(TEST_DIR, image)) as f:
             content = f.read()
 
-        self.assertEqual(html, content)
+        self.maxDiff = None
+        self.assertHTMLEqual(html, content)
