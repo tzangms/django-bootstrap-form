@@ -2,6 +2,14 @@
 
 {% for form in formset %}
 
-  {% include "bootstrapform/form.html" with form=form %}
+  {% if classes.label == 'sr-only' %}
+      <div class="form-inline">
+  {% endif %}
+
+    {% include "bootstrapform/form.html" with form=form %}
+
+  {% if classes.label == 'sr-only' %}
+     </div>
+  {% endif %}
 
 {% endfor %}
