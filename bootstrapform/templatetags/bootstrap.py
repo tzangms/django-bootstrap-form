@@ -20,13 +20,9 @@ def bootstrap_inline(element):
 
 
 @register.filter
-def bootstrap_horizontal(element, label_cols={}):
-    if not label_cols:
-        label_cols = 'col-sm-2 col-lg-2'
+def bootstrap_horizontal(element, label_cols='col-sm-2 col-lg-2'):
 
-    markup_classes = {'label': label_cols,
-            'value': '',
-            'single_value': ''}
+    markup_classes = {'label': label_cols, 'value': '', 'single_value': ''}
 
     for cl in label_cols.split(' '):
         splited_class = cl.split('-')
