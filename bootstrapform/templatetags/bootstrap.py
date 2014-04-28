@@ -20,28 +20,31 @@ def bootstrap_inline(element):
 
 
 @register.filter
-def bootstrap_horizontal(element, label_cols='col-sm-2 col-lg-2'):
+def bootstrap_horizontal(element, label_cols=None):
+    if not label_cols:
+        label_cols = config.BOOTSTRAP_LABEL_COLS
 
     markup_classes = {'label': label_cols, 'value': '', 'single_value': ''}
 
-    for cl in label_cols.split(' '):
-        splitted_class = cl.split('-')
+    # Extract each class of label column to compute class of column value
+    for css_class in label_cols.split(' '):
+        # Eg. 'col-sm-2'
+        label_class = css_class.split('-')
 
         try:
-            value_nb_cols = int(splitted_class[-1])
+            label_nb_cols = int(label_class[-1])
         except ValueError:
-            value_nb_cols = config.BOOTSTRAP_COLUMN_COUNT
+            label_nb_cols = None
 
-        if value_nb_cols >= config.BOOTSTRAP_COLUMN_COUNT:
-            splitted_class[-1] = config.BOOTSTRAP_COLUMN_COUNT
-        else:
-            offset_class = cl.split('-')
-            offset_class[-1] = 'offset-' + str(value_nb_cols)
-            splitted_class[-1] = str(config.BOOTSTRAP_COLUMN_COUNT - value_nb_cols)
-            markup_classes['single_value'] += ' ' + '-'.join(offset_class)
-            markup_classes['single_value'] += ' ' + '-'.join(splitted_class)
+        if label_nb_cols is None or label_nb_cols >= config.BOOTSTRAP_COLUMN_COUNT:
+            label_nb_cols = config.BOOTSTRAP_DEFAULT_VALUE_COLUMN_COUNT
 
-        markup_classes['value'] += ' ' + '-'.join(splitted_class)
+        value_nb_cols = config.BOOTSTRAP_COLUMN_COUNT - label_nb_cols
+        value_offset_class = "%s-%s-offset-%d" % (label_class[0], label_class[1], label_nb_cols)
+        value_class = "%s-%s-%d" % (label_class[0], label_class[1], value_nb_cols)
+
+        markup_classes['single_value'] += " %s %s" % (value_offset_class, value_class)
+        markup_classes['value'] += " %s" % value_class
 
     return render(element, markup_classes)
 
