@@ -21,13 +21,20 @@ def bootstrap_inline(element):
 
 
 @register.filter
-def bootstrap_horizontal(element, label_cols=None):
+def bootstrap_horizontal(element, label_value_cols=''):
+    # Split label and value classes (mulitple arguments in same argument)
+    label_value_cols = label_value_cols.split(',')
+
+    label_cols = label_value_cols[0]
+    value_cols = label_value_cols[1] if len(label_value_cols) > 1 else None
+
     if not label_cols:
         label_cols = config.BOOTSTRAP_LABEL_COLS
 
     markup_classes = {'label': label_cols, 'value': '', 'single_value': ''}
 
-    # Extract each class of label column to compute class of column value
+    # Extract each class of label column to compute class of column value for
+    # each display size
     for css_class in label_cols.split(' '):
         # Eg. 'col-sm-2'
         label_class = css_class.split('-')
@@ -40,12 +47,22 @@ def bootstrap_horizontal(element, label_cols=None):
         if label_nb_cols is None or label_nb_cols >= config.BOOTSTRAP_COLUMN_COUNT:
             label_nb_cols = config.BOOTSTRAP_DEFAULT_VALUE_COLUMN_COUNT
 
-        value_nb_cols = config.BOOTSTRAP_COLUMN_COUNT - label_nb_cols
         value_offset_class = "%s-%s-offset-%d" % (label_class[0], label_class[1], label_nb_cols)
-        value_class = "%s-%s-%d" % (label_class[0], label_class[1], value_nb_cols)
 
-        markup_classes['single_value'] += " %s %s" % (value_offset_class, value_class)
-        markup_classes['value'] += " %s" % value_class
+        if not value_cols:
+            value_nb_cols = config.BOOTSTRAP_COLUMN_COUNT - label_nb_cols
+            value_class = "%s-%s-%d" % (label_class[0], label_class[1], value_nb_cols)
+
+            markup_classes['single_value'] += " %s %s" % (value_offset_class, value_class)
+            markup_classes['value'] += " %s" % value_class
+        else:
+            # Only add the offset class for each display size
+            markup_classes['single_value'] += " %s" % (value_offset_class)
+
+    if value_cols:
+        # Only offset classes have been generated and addedd to 'single_value'
+        markup_classes['single_value'] += " %s" % value_cols
+        markup_classes['value'] = value_cols
 
     return render(element, markup_classes)
 
