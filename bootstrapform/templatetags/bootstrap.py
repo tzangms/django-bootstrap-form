@@ -64,7 +64,7 @@ def render(element, markup_classes):
     if element_type == 'boundfield':
         add_input_classes(element)
         template = get_template("bootstrapform/field.html")
-        context = Context({'field': element, 'classes': markup_classes})
+        context = Context({'field': element, 'classes': markup_classes, 'form': element.form})
     else:
         has_management = getattr(element, 'management_form', None)
         if has_management:
