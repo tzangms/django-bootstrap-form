@@ -1,6 +1,6 @@
 {% load bootstrap %}
 
-<div class="form-group{% if field.errors %} has-error{% endif %}">
+<div class="form-group{% if field.errors %} has-error{% endif %} form-group-{{ field.name }}">
     {% if field|is_checkbox %}
         <div class="{{ classes.single_value }}">
             <div class="checkbox">
