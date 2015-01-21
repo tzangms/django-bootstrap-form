@@ -22,6 +22,19 @@ Twitter Bootstrap for Django Form.
 
 A simple Django template tag to work with `Bootstrap <http://twitter.github.com/bootstrap/>`_
 
+Install
+=======
+
+Add to ``INSTALLED_APPS``:
+
+.. code-block ::
+
+   # myapp/settings.py
+   
+   INSTALLED_APPS = [
+        'bootstrapform',
+        # ...
+   ]
 
 Usage
 ======
@@ -30,6 +43,7 @@ Use it like this, simple.
 
 .. code-block::
 
+   {% load bootstrap %}
    {{ form|bootstrap }}
 
 
