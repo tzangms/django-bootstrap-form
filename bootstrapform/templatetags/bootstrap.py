@@ -29,23 +29,23 @@ def bootstrap_horizontal(element, label_cols={}):
             'single_value': ''}
 
     for cl in label_cols.split(' '):
-        splited_class = cl.split('-')
+        splitted_class = cl.split('-')
 
         try:
-            value_nb_cols = int(splited_class[-1])
+            value_nb_cols = int(splitted_class[-1])
         except ValueError:
             value_nb_cols = config.BOOTSTRAP_COLUMN_COUNT
 
         if value_nb_cols >= config.BOOTSTRAP_COLUMN_COUNT:
-            splited_class[-1] = config.BOOTSTRAP_COLUMN_COUNT
+            splitted_class[-1] = config.BOOTSTRAP_COLUMN_COUNT
         else:
             offset_class = cl.split('-')
             offset_class[-1] = 'offset-' + str(value_nb_cols)
-            splited_class[-1] = str(config.BOOTSTRAP_COLUMN_COUNT - value_nb_cols)
+            splitted_class[-1] = str(config.BOOTSTRAP_COLUMN_COUNT - value_nb_cols)
             markup_classes['single_value'] += ' ' + '-'.join(offset_class)
-            markup_classes['single_value'] += ' ' + '-'.join(splited_class)
+            markup_classes['single_value'] += ' ' + '-'.join(splitted_class)
 
-        markup_classes['value'] += ' ' + '-'.join(splited_class)
+        markup_classes['value'] += ' ' + '-'.join(splitted_class)
 
     return render(element, markup_classes)
 
