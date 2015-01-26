@@ -1,11 +1,6 @@
-{% if form.non_field_errors %}
-    <div class="alert alert-danger">
-        <a class="close" data-dismiss="alert">&times;</a>
-        {% for non_field_error in form.non_field_errors %}
-             {{ non_field_error }}
-        {% endfor %}
-    </div>
-{% endif %}
+{% with errors=form.non_field_errors %}
+    {% include 'bootstrapform/errors.html' %}
+{% endwith %}
 
 {% for field in form.hidden_fields %}
     {{ field }}
