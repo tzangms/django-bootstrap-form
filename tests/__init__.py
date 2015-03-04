@@ -8,6 +8,7 @@ parent = os.path.dirname(os.path.dirname(
 
 sys.path.insert(0, parent)
 
+import django
 from django.test import TestCase
 from django.template import Template, Context
 from django.core.management import call_command
@@ -22,6 +23,12 @@ CHOICES = (
     (1, 'One'), 
     (2, 'Two'),
 )
+
+try:
+    # required by Django 1.7 and later
+    django.setup()
+except:
+    pass
 
 class ExampleForm(forms.Form):
     char_field = forms.CharField()
