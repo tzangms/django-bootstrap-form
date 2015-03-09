@@ -11,11 +11,6 @@ Django bootstrap form
 
 .. image:: https://coveralls.io/repos/tzangms/django-bootstrap-form/badge.png?branch=master  
    :target: https://coveralls.io/r/tzangms/django-bootstrap-form?branch=master
-
-
-.. image:: https://d2weczhvl823v0.cloudfront.net/tzangms/django-bootstrap-form/trend.png
-   :alt: Bitdeli badge
-   :target: https://bitdeli.com/free
    
 
 Twitter Bootstrap for Django Form.
