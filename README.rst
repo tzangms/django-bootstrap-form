@@ -20,7 +20,7 @@ Django bootstrap form
 
 Twitter Bootstrap for Django Form.
 
-A simple Django template tag to work with `Bootstrap <http://twitter.github.com/bootstrap/>`_
+A simple Django template tag to work with `Bootstrap <http://getbootstrap.com/>`_
 
 
 Usage
