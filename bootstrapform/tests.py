@@ -1,12 +1,4 @@
 import os
-import sys
-
-os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.test_settings'
-
-parent = os.path.dirname(os.path.dirname(
-            os.path.abspath(__file__)))
-
-sys.path.insert(0, parent)
 
 from django.test import TestCase
 from django.template import Template, Context
@@ -36,6 +28,8 @@ class ExampleForm(forms.Form):
 
 
 class BootstrapTemplateTagTests(TestCase):
+    maxDiff = None
+
     def setUp(self):
         call_command('syncdb', interactive=False)
 
