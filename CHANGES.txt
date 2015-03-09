@@ -1,3 +1,9 @@
+- 2015-03-09:
+
+  - Fix unit test fail with Django 1.7 @nikolas
+  - Performance improvement by @theSage21 @stephane
+  - Some bugfixes and improvements by @nikolas @zauddelig @bulv1ne
+
 - 2013-12-06:
 
   - Fixed problem with inputs of type file, that were displayed inside an input text element
