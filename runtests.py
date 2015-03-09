@@ -44,7 +44,10 @@ def runtests(**test_args):
     parent = dirname(abspath(__file__))
     sys.path.insert(0, parent)
 
-    django.setup()
+    try:
+        django.setup()
+    except:
+        pass
 
     TestRunner = get_runner(settings)
     test_runner = TestRunner(verbosity=1, interactive=True)
