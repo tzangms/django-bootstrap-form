@@ -49,7 +49,7 @@
             <label class="control-label {{ classes.label }} {% if field.field.required %}{{ form.required_css_class }}{% endif %}" for="{{ field.auto_id }}">{{ field.label }}</label>
         {% endif %}
 
-        <div class="{{ classes.value }} {% if field|is_multiple_checkbox %}multiple-checkbox{% endif %}">
+        <div class="{{ classes.value }} {% if field|is_multiple_checkbox %}checkbox multiple-checkbox{% endif %}">
             {{ field }}
 
             {% for error in field.errors %}
