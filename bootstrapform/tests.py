@@ -1,13 +1,6 @@
 import os
-import sys
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.test_settings'
-
-parent = os.path.dirname(os.path.dirname(
-            os.path.abspath(__file__)))
-
-sys.path.insert(0, parent)
-
+import django
 from django.test import TestCase
 from django.template import Template, Context
 from django.core.management import call_command
@@ -23,6 +16,12 @@ CHOICES = (
     (2, 'Two'),
 )
 
+try:
+    # required by Django 1.7 and later
+    django.setup()
+except:
+    pass
+
 class ExampleForm(forms.Form):
     char_field = forms.CharField()
     choice_field = forms.ChoiceField(choices=CHOICES)
@@ -36,6 +35,8 @@ class ExampleForm(forms.Form):
 
 
 class BootstrapTemplateTagTests(TestCase):
+    maxDiff = None
+
     def setUp(self):
         call_command('syncdb', interactive=False)
 

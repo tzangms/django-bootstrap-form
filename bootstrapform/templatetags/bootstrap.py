@@ -20,13 +20,9 @@ def bootstrap_inline(element):
 
 
 @register.filter
-def bootstrap_horizontal(element, label_cols={}):
-    if not label_cols:
-        label_cols = 'col-sm-2 col-lg-2'
+def bootstrap_horizontal(element, label_cols='col-sm-2 col-lg-2'):
 
-    markup_classes = {'label': label_cols,
-            'value': '',
-            'single_value': ''}
+    markup_classes = {'label': label_cols, 'value': '', 'single_value': ''}
 
     for cl in label_cols.split(' '):
         splitted_class = cl.split('-')
@@ -49,7 +45,7 @@ def bootstrap_horizontal(element, label_cols={}):
 
     return render(element, markup_classes)
 
-
+@register.filter
 def add_input_classes(field):
     if not is_checkbox(field) and not is_multiple_checkbox(field) \
        and not is_radio(field) and not is_file(field):
@@ -64,7 +60,7 @@ def render(element, markup_classes):
     if element_type == 'boundfield':
         add_input_classes(element)
         template = get_template("bootstrapform/field.html")
-        context = Context({'field': element, 'classes': markup_classes})
+        context = Context({'field': element, 'classes': markup_classes, 'form': element.form})
     else:
         has_management = getattr(element, 'management_form', None)
         if has_management:

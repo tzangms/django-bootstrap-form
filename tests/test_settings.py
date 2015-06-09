@@ -10,6 +10,12 @@ DATABASES = {
 
 SITE_ID = 1
 
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+)
+
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sites',
