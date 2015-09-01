@@ -1,8 +1,8 @@
 {% if form.non_field_errors %}
-    <div class="alert alert-danger">
-        <a class="close" data-dismiss="alert">&times;</a>
+    <div class="ui error message">
+        <div class="header">Error</div>
         {% for non_field_error in form.non_field_errors %}
-             {{ non_field_error }}
+             <p>{{ non_field_error }}</p>
         {% endfor %}
     </div>
 {% endif %}
@@ -12,5 +12,5 @@
 {% endfor %}
 
 {% for field in form.visible_fields %}
-    {% include 'bootstrapform/field.html' %}
+    {% include 'semanticui/field.html' %}
 {% endfor %}
