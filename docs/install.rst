@@ -1,10 +1,8 @@
-=====================
-Django bootstrap form
-=====================
+======================
+Django semanticui form
+======================
 
-Generate twitter-bootstrap form output for django form
-
-A simple Django template tag to work with twitter bootstrap ( http://twitter.github.com/bootstrap/ )
+Generate `Semantic UI <http://semantic-ui.com/>`_ form output for Django form
 
 
 
@@ -17,11 +15,11 @@ Screenshot
 Installation
 ------------
 
-Install django-bootstrap-form with pip
+Install ``django-semanticui-form`` with pip
 
 .. code-block:: sh
 
-    $ pip install django-bootstrap-form
+    $ pip install django-semanticui-form
 
 
 
@@ -29,13 +27,13 @@ Install django-bootstrap-form with pip
 Configuration
 -------------
 
-Add 'bootstrapform' to INSTALLED_APPS.
+Add ``semanticuiform`` to ``INSTALLED_APPS``.
 
 .. code-block:: python
 
     INSTALLED_APPS = (
         ...
-        'bootstrapform',
+        'semanticuiform',
         ...
     )
 
@@ -45,27 +43,12 @@ Usage
 
 .. code-block:: none
 
-    {% load bootstrap %}
+    {% load semanticui %}
 
-    {{ form|bootstrap }}
+    {{ form|semanticui }}
 
     # or use with individual field
-    {{ form.<field name>|bootstrap }} - To output individual fields
+    {{ form.<field name>|semanticui }} - To output individual fields
 
-    # For horizontal forms
-    {{ form|bootstrap_horizontal }}
-    
-    # Or with custom size (default is 'col-lg-2 col-sm-2')
-    {{ form|bootstrap_horizontal:'col-lg-4' }}
-
-CHANGELOG
----------
-
-- 2013-8-27:
-
-  Add support for Bootstrap 3, contributed by `Nivl <https://github.com/Nivl>`_
-
-
-- 2013-5-7:
-
-  Add `radio` support for ChoiceField
+    # For inline forms
+    {{ form|semanticui_inline }}

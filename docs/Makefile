@@ -77,17 +77,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/djangobootstrapform.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/djangosemanticuiform.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/djangobootstrapform.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/djangosemanticuiform.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/djangobootstrapform"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/djangobootstrapform"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/djangosemanticuiform"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/djangosemanticuiform"
 	@echo "# devhelp"
 
 epub:

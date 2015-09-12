@@ -1,2 +1,2 @@
 include README.rst
-graft bootstrapform/templates
+graft semanticuiform/templates

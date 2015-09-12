@@ -42,7 +42,7 @@ tag to ``|semanticui_inline``.
 	<form class="ui form">
 	    <legend>Form Title</legend>
 	    {% csrf_token %}
-	    {{ form|bootstrap_inline }}
+	    {{ form|semanticui_inline }}
         <button class="ui button" type="submit">Submit</button>
 	</form>
 
