@@ -10,17 +10,11 @@ register = template.Library()
 @register.filter
 def semanticui(element):
     markup_classes = {'label': '', 'value': '', 'single_value': ''}
-    return render(element, markup_classes)
-
-
-# @register.filter
-# def semanticui_inline(element):
-#     markup_classes = {'label': 'sr-only', 'value': '', 'single_value': ''}
-#     return render(element, markup_classes)
+    return render(element, markup_classes, False)
 
 
 @register.filter
-def semanticui_horizontal(element, label_cols=''):
+def semanticui_inline(element, label_cols=''):
 
     markup_classes = {'label': label_cols, 'value': '', 'single_value': ''}
 
@@ -43,7 +37,7 @@ def semanticui_horizontal(element, label_cols=''):
     #
     #     markup_classes['value'] += ' ' + '-'.join(splitted_class)
 
-    return render(element, markup_classes)
+    return render(element, markup_classes, True)
 
 # @register.filter
 # def add_input_classes(field):
@@ -54,28 +48,39 @@ def semanticui_horizontal(element, label_cols=''):
 #         field.field.widget.attrs['class'] = field_classes
 
 
-def render(element, markup_classes):
+def render(element, markup_classes, is_inline):
     element_type = element.__class__.__name__.lower()
 
     if element_type == 'boundfield':
-        add_input_classes(element)
+        # add_input_classes(element)
         template = get_template("semanticui/field.html")
-        context = Context({'field': element, 'classes': markup_classes, 'form': element.form})
+        context = Context({
+            'field': element,
+            'classes': markup_classes,
+            'form': element.form,
+            'is_inline': is_inline,
+        })
     else:
         has_management = getattr(element, 'management_form', None)
         if has_management:
             # for form in element.forms:
             #     for field in form.visible_fields():
             #         add_input_classes(field)
-
             template = get_template("semanticui/formset.html")
-            context = Context({'formset': element, 'classes': markup_classes})
+            context = Context({
+                'formset': element,
+                'classes': markup_classes,
+                'is_inline': is_inline,
+            })
         else:
             # for field in element.visible_fields():
             #     add_input_classes(field)
-
             template = get_template("semanticui/form.html")
-            context = Context({'form': element, 'classes': markup_classes})
+            context = Context({
+                'form': element,
+                'classes': markup_classes,
+                'is_inline': is_inline,
+            })
 
     return template.render(context)
 
