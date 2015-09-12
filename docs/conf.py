@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'django-semanticui-form'
-copyright = u'2015, peterbe'
+copyright = u'2015, Peter Bengtsson'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
