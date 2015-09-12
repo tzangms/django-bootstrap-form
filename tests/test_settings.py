@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.auth',
     'django.contrib.admin',
-    'bootstrapform',
+    'semanticuiform',
 ]
 
 ROOT_URLCONF = 'tests.urls'
@@ -44,4 +44,4 @@ TEMPLATE_DIRS = (
     local_path('templates'),
 )
 
-SECRET_KEY = 'django-bootstrap-form'
+SECRET_KEY = 'django-semanticui-form'

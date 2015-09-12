@@ -21,7 +21,7 @@ settings.configure(
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.sites',
-        'bootstrapform',
+        'semanticuiform',
     ],
     MIDDLEWARE_CLASSES = (
         'django.contrib.sessions.middleware.SessionMiddleware',
@@ -51,7 +51,7 @@ def runtests(**test_args):
 
     TestRunner = get_runner(settings)
     test_runner = TestRunner(verbosity=1, interactive=True)
-    failures = test_runner.run_tests(['bootstrapform'], test_args)
+    failures = test_runner.run_tests(['semanticuiform'], test_args)
     sys.exit(failures)
 
 

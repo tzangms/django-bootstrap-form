@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
-from bootstrapform.meta import VERSION
+from semanticuiform.meta import VERSION
 
 setup(
-    name='django-bootstrap-form',
+    name='django-semanticui-form',
     version=str(VERSION),
-    description="django-bootstrap-form",
+    description="django-semanticui-form",
     classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
@@ -16,10 +16,10 @@ setup(
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
     ],
-    keywords='bootstrap,django',
-    author='tzangms',
-    author_email='tzangms@gmail.com',
-    url='http://github.com/tzangms/django-bootstrap-form',
+    keywords='SemanticUI,django',
+    author='Peter Bengtsson',
+    author_email='mail@peterbe.com',
+    url='http://github.com/peterbe/django-semanticui-form',
     license='BSD',
     test_suite='runtests.runtests',
     install_requires = [

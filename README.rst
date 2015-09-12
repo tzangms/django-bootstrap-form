@@ -1,62 +1,56 @@
-=====================
-Django bootstrap form
-=====================
+=======================
+Django Semantic UI form
+=======================
 
-.. image:: https://badge.fury.io/py/django-bootstrap-form.png
+.. image:: https://badge.fury.io/py/django-semanticui-form.png
    :alt: PyPI version
-   :target: https://pypi.python.org/pypi/django-bootstrap-form
+   :target: https://pypi.python.org/pypi/django-semanticui-form
 
-.. image:: https://travis-ci.org/tzangms/django-bootstrap-form.png?branch=master   
-    :target: https://travis-ci.org/tzangms/django-bootstrap-form
+.. image:: https://travis-ci.org/peterbe/django-semanticui-form.png?branch=master
+    :target: https://travis-ci.org/peterbe/django-semanticui-form
 
-.. image:: https://coveralls.io/repos/tzangms/django-bootstrap-form/badge.png?branch=master  
-   :target: https://coveralls.io/r/tzangms/django-bootstrap-form?branch=master
-   
+.. image:: https://coveralls.io/repos/peterbe/django-semanticui-form/badge.png?branch=master
+   :target: https://coveralls.io/r/peterbe/django-semanticui-form?branch=master
 
-Twitter Bootstrap for Django Form.
 
-A simple Django template tag to work with `Bootstrap <http://getbootstrap.com/>`_
+Semantic UI for Django Form.
 
+A simple Django template tag to work with `Semantic UI <http://semantic-ui.com/>`_
+
+This project is a fork from
+`django-bootstrap-form <https://github.com/tzangms/django-bootstrap-form>`_ by
+`tzangms <https://github.com/tzangms>`_.
 
 Usage
 ======
 
-Add "bootstrapform" to your INSTALLED_APPS.
+Add ``semanticuiform`` to your ``INSTALLED_APPS``.
 
 At the top of your template load in our template tags::
 
-	{% load bootstrap %}
+	{% load semanticui %}
 
 Then to render your form::
 
-	<form role="form">
+	<form class="ui form">
 	    <legend>Form Title</legend>
 	    {% csrf_token %}
-	    {{ form|bootstrap }}
-	    <div class="form-group">
-	      <button type="submit" class="btn btn-primary">Submit</button>
-	    </div>
+	    {{ form|semanticui }}
+        <button class="ui button" type="submit">Submit</button>
 	</form>
 
-You can also set class="form-vertical" on the form element.
+To make the form with inline element, change the ``|semanticui`` template
+tag to ``|semanticui_inline``.
 
-To use class="form-inline" on the form element, also change the "|boostrap" template tag to "|bootstrap_inline".
-
-It is also possible to create a horizontal form. The form class and template tag are both changed, and you will also need slightly different CSS around the submit button::
-
-	<form class="form-horizontal">
+	<form class="ui form">
 	    <legend>Form Title</legend>
 	    {% csrf_token %}
-	    {{ form|bootstrap_horizontal }}
-	    <div class="form-group">
-	      <div class="col-sm-10 col-sm-offset-2">
-	      	<button type="submit" class="btn btn-primary">Submit</button>
-	      </div>
-	    </div>
+	    {{ form|semanticui_inline }}
+        <button class="ui button" type="submit">Submit</button>
 	</form>
 
 
 Demo
 =====
 
-Checkout this `Demo site <http://django-bootstrap-form.herokuapp.com/>`_ to see it in action. 
+Not yet.

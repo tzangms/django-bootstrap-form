@@ -11,8 +11,8 @@ TEST_DIR = os.path.abspath(os.path.join(__file__, '..'))
 
 
 CHOICES = (
-    (0, 'Zero'), 
-    (1, 'One'), 
+    (0, 'Zero'),
+    (1, 'One'),
     (2, 'Two'),
 )
 
@@ -22,19 +22,22 @@ try:
 except:
     pass
 
+
 class ExampleForm(forms.Form):
     char_field = forms.CharField()
     choice_field = forms.ChoiceField(choices=CHOICES)
     radio_choice = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect)
     multiple_choice = forms.MultipleChoiceField(choices=CHOICES)
-    multiple_checkbox = forms.MultipleChoiceField(choices=CHOICES, widget=forms.CheckboxSelectMultiple)
+    multiple_checkbox = forms.MultipleChoiceField(
+        choices=CHOICES,
+        widget=forms.CheckboxSelectMultiple)
     file_fied = forms.FileField()
     password_field = forms.CharField(widget=forms.PasswordInput)
     textarea = forms.CharField(widget=forms.Textarea)
     boolean_field = forms.BooleanField()
 
 
-class BootstrapTemplateTagTests(TestCase):
+class SemanticUITemplateTagTests(TestCase):
     maxDiff = None
 
     def setUp(self):
@@ -43,7 +46,9 @@ class BootstrapTemplateTagTests(TestCase):
     def test_basic_form(self):
         form = ExampleForm()
 
-        html = Template("{% load bootstrap %}{{ form|bootstrap }}").render(Context({'form': form}))
+        html = Template(
+            "{% load semanticui %}{{ form|semanticui }}"
+        ).render(Context({'form': form}))
 
         tpl = os.path.join('fixtures', 'basic.html')
         with open(os.path.join(TEST_DIR, tpl)) as f:
@@ -51,12 +56,14 @@ class BootstrapTemplateTagTests(TestCase):
 
         self.assertHTMLEqual(html, content)
 
-    def test_horizontal_form(self):
+    def test_inline_form(self):
         form = ExampleForm()
 
-        html = Template("{% load bootstrap %}{{ form|bootstrap_horizontal }}").render(Context({'form': form}))
+        html = Template(
+            "{% load semanticui %}{{ form|semanticui_inline }}"
+        ).render(Context({'form': form}))
 
-        tpl = os.path.join('fixtures', 'horizontal.html')
+        tpl = os.path.join('fixtures', 'inline.html')
         with open(os.path.join(TEST_DIR, tpl)) as f:
             content = f.read()
 
