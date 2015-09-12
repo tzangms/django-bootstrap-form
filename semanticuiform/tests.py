@@ -37,7 +37,7 @@ class ExampleForm(forms.Form):
     boolean_field = forms.BooleanField()
 
 
-class BootstrapTemplateTagTests(TestCase):
+class SemanticUITemplateTagTests(TestCase):
     maxDiff = None
 
     def setUp(self):
