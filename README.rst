@@ -17,6 +17,9 @@ Semantic UI for Django Form.
 
 A simple Django template tag to work with `Semantic UI <http://semantic-ui.com/>`_
 
+This project is a fork from
+`django-bootstrap-form <https://github.com/tzangms/django-bootstrap-form>`_ by
+`tzangms <https://github.com/tzangms>`_.
 
 Usage
 ======
