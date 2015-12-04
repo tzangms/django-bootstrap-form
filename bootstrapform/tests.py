@@ -38,7 +38,7 @@ class BootstrapTemplateTagTests(TestCase):
     maxDiff = None
 
     def setUp(self):
-        call_command('syncdb', interactive=False)
+        call_command('migrate', interactive=False)
 
     def test_basic_form(self):
         form = ExampleForm()
