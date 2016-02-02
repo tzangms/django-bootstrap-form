@@ -56,11 +56,16 @@ def add_input_classes(field):
 
 def render(element, markup_classes):
     element_type = element.__class__.__name__.lower()
+    common_context = {
+        'field_template': config.BOOTSTRAP_FIELD_TEMPLATE,
+        'form_template': config.BOOTSTRAP_FORM_TEMPLATE,
+        'formset_template': config.BOOTSTRAP_FORMSET_TEMPLATE,
+    }
 
     if element_type == 'boundfield':
         add_input_classes(element)
-        template = get_template("bootstrapform/field.html")
-        context = Context({'field': element, 'classes': markup_classes, 'form': element.form})
+        template = get_template(config.BOOTSTRAP_FIELD_TEMPLATE)
+        context = Context(dict(common_context, **{'field': element, 'classes': markup_classes, 'form': element.form}))
     else:
         has_management = getattr(element, 'management_form', None)
         if has_management:
@@ -68,14 +73,14 @@ def render(element, markup_classes):
                 for field in form.visible_fields():
                     add_input_classes(field)
 
-            template = get_template("bootstrapform/formset.html")
-            context = Context({'formset': element, 'classes': markup_classes})
+            template = get_template(config.BOOTSTRAP_FORMSET_TEMPLATE)
+            context = Context(dict(common_context, **{'formset': element, 'classes': markup_classes}))
         else:
             for field in element.visible_fields():
                 add_input_classes(field)
 
-            template = get_template("bootstrapform/form.html")
-            context = Context({'form': element, 'classes': markup_classes})
+            template = get_template(config.BOOTSTRAP_FORM_TEMPLATE)
+            context = Context(dict(common_context, **{'form': element, 'classes': markup_classes}))
 
     return template.render(context)
 
