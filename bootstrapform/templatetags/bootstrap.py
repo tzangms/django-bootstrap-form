@@ -63,6 +63,8 @@ def render(element, markup_classes):
         context = Context({'field': element, 'classes': markup_classes, 'form': element.form})
     else:
         has_management = getattr(element, 'management_form', None)
+        if not hasattr(element, 'required_css_class'):
+            element.required_css_class = 'required'
         if has_management:
             for form in element.forms:
                 for field in form.visible_fields():
