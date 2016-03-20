@@ -1,15 +1,26 @@
 language: python
 
+env:
+  matrix:
+    - TOX_ENV=py27-dj15
+    - TOX_ENV=py27-dj16
+    - TOX_ENV=py27-dj17
+    - TOX_ENV=py27-dj18
+    - TOX_ENV=py34-dj15
+    - TOX_ENV=py34-dj16
+    - TOX_ENV=py34-dj17
+    - TOX_ENV=py34-dj18
+
 python:
   - "2.7"
   - "3.4"
-  - "3.5"
 
 install:
-  - pip install coverage coveralls
+  - pip install tox coverage coveralls
 
 script:
-  - coverage run --source=bootstrapform setup.py test
+  #- coverage run --source=bootstrapform setup.py test
+  - tox -e $TOX_ENV
 
 after_success:
   - coveralls
