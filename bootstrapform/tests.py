@@ -43,7 +43,9 @@ class BootstrapTemplateTagTests(TestCase):
         html = Template("{% load bootstrap %}{{ form|bootstrap }}").render(Context({'form': form}))
 
 
-        if StrictVersion(django.get_version()) >= StrictVersion('1.7'):
+        if StrictVersion(django.get_version()) >= StrictVersion('1.10b1'):
+            fixture = 'basic_dj110.html'
+        elif StrictVersion(django.get_version()) >= StrictVersion('1.7'):
             fixture = 'basic.html'
         elif StrictVersion(django.get_version()) >= StrictVersion('1.6'):
             fixture = 'basic_dj16.html'
@@ -61,7 +63,9 @@ class BootstrapTemplateTagTests(TestCase):
 
         html = Template("{% load bootstrap %}{{ form|bootstrap_horizontal }}").render(Context({'form': form}))
 
-        if StrictVersion(django.get_version()) >= StrictVersion('1.7'):
+        if StrictVersion(django.get_version()) >= StrictVersion('1.10b1'):
+            fixture = 'horizontal_dj110.html'
+        elif StrictVersion(django.get_version()) >= StrictVersion('1.7'):
             fixture = 'horizontal.html'
         elif StrictVersion(django.get_version()) >= StrictVersion('1.6'):
             fixture = 'horizontal_dj16.html'
