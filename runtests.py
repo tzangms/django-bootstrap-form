@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 
+import os
 import sys
 import django
 from os.path import dirname, abspath
 
 from django.conf import settings
 
-
+local_path = lambda path: os.path.join(os.path.dirname(__file__), path)
 
 settings.configure(
     DATABASES = {
@@ -34,6 +35,26 @@ settings.configure(
     SITE_ID=1,
     DEBUG=False,
     ROOT_URLCONF='',
+
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [local_path('templates'), ],
+            'OPTIONS': {
+                'debug': False,
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+                'loaders': [
+                    'django.template.loaders.filesystem.Loader',
+                    'django.template.loaders.app_directories.Loader',
+                ],
+            },
+        },
+]
 )
 
 
