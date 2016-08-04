@@ -1,5 +1,3 @@
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
 
-
-VERSION = StrictVersion('3.3')
-
+VERSION = LooseVersion('3.3+polyconseil')
