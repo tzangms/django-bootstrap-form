@@ -35,10 +35,7 @@ settings.configure(
     DEBUG=False,
     ROOT_URLCONF='',
     TEMPLATES = [  # For >= Django 1.10
-        {
-            'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'APP_DIRS': True,
-        },
+        {'BACKEND': 'django.template.backends.django.DjangoTemplates', 'APP_DIRS': True},
     ]
 )
 
