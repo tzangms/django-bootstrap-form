@@ -77,8 +77,8 @@ def render(element, markup_classes):
             template = get_template("bootstrapform/form.html")
             context = Context({'form': element, 'classes': markup_classes})
 
-        if django_version >= (1, 8):
-            context = context.flatten()
+    if django_version >= (1, 8):
+        context = context.flatten()
 
     return template.render(context)
 

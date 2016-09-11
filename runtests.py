@@ -34,6 +34,12 @@ settings.configure(
     SITE_ID=1,
     DEBUG=False,
     ROOT_URLCONF='',
+    TEMPLATES = [  # For >= Django 1.10
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'APP_DIRS': True,
+        },
+    ]
 )
 
 
