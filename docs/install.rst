@@ -49,17 +49,24 @@ Usage
 
     {{ form|bootstrap }}
 
-    # or use with individual field
+    # Optionally set the nº of columns
+    {{ form|bootstrap:"3" }}
+
+    # Or use with individual field
     {{ form.<field name>|bootstrap }} - To output individual fields
 
     # For horizontal forms
     {{ form|bootstrap_horizontal }}
-    
+
     # Or with custom size (default is 'col-lg-2 col-sm-2')
     {{ form|bootstrap_horizontal:'col-lg-4' }}
 
 CHANGELOG
 ---------
+
+- 2017-3-13:
+
+  Add support to set the nº of columns
 
 - 2013-8-27:
 
