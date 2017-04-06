@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 from bootstrapform.meta import VERSION
 
 setup(
-    name='django-bootstrap-form',
+    name='polyconseil-django-bootstrap-form',
     version=str(VERSION),
     description="django-bootstrap-form",
     classifiers=[

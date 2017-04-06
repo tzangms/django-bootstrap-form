@@ -1,3 +1,3 @@
 from distutils.version import LooseVersion
 
-VERSION = LooseVersion('3.3+polyconseil')
+VERSION = LooseVersion('3.3')
