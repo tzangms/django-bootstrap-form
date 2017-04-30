@@ -8,3 +8,4 @@ docs/_build
 .cache
 .tox
 .python-version
+.idea
