@@ -6,12 +6,12 @@ Django bootstrap form
    :alt: PyPI version
    :target: https://pypi.python.org/pypi/django-bootstrap-form
 
-.. image:: https://travis-ci.org/tzangms/django-bootstrap-form.png?branch=master   
+.. image:: https://travis-ci.org/tzangms/django-bootstrap-form.png?branch=master
     :target: https://travis-ci.org/tzangms/django-bootstrap-form
 
-.. image:: https://coveralls.io/repos/tzangms/django-bootstrap-form/badge.png?branch=master  
+.. image:: https://coveralls.io/repos/tzangms/django-bootstrap-form/badge.png?branch=master
    :target: https://coveralls.io/r/tzangms/django-bootstrap-form?branch=master
-   
+
 
 Twitter Bootstrap for Django Form.
 
@@ -38,6 +38,17 @@ Then to render your form::
 	    </div>
 	</form>
 
+You can optionally set the nº of columns to layout the form::
+
+	<form role="form">
+	    <legend>Form Title</legend>
+	    {% csrf_token %}
+	    {{ form|bootstrap:"3" }}
+	    <div class="form-group">
+	      <button type="submit" class="btn btn-primary">Submit</button>
+	    </div>
+	</form>
+
 You can also set class="form-vertical" on the form element.
 
 To use class="form-inline" on the form element, also change the "|boostrap" template tag to "|bootstrap_inline".
@@ -59,4 +70,4 @@ It is also possible to create a horizontal form. The form class and template tag
 Demo
 =====
 
-Checkout this `Demo site <http://django-bootstrap-form.herokuapp.com/>`_ to see it in action. 
+Checkout this `Demo site <http://django-bootstrap-form.herokuapp.com/>`_ to see it in action.

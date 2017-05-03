@@ -1,3 +1,5 @@
+{% load bootstrap %}
+
 {% if form.non_field_errors %}
     <div class="alert alert-danger">
         <a class="close" data-dismiss="alert">&times;</a>
@@ -11,6 +13,18 @@
     {{ field }}
 {% endfor %}
 
-{% for field in form.visible_fields %}
-    {% include 'bootstrapform/field.html' %}
-{% endfor %}
+{% if num_cols %}
+    {% for row in form|as_grid:num_cols %}
+        <div class='row'>
+        {% for field in row %}
+            <div class="col-md-{{ col_width }}">
+                {% include 'bootstrapform/field.html' %}
+            </div>
+        {% endfor %}
+        </div>
+    {% endfor %}
+{% else %}
+    {% for field in form.visible_fields %}
+        {% include 'bootstrapform/field.html' %}
+    {% endfor %}
+{% endif %}
