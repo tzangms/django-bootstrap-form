@@ -17,10 +17,6 @@ env:
     - TOX_ENV=py34-dj110
     - TOX_ENV=py34-dj111
 
-python:
-  - "2.7"
-  - "3.4"
-
 install:
   - pip install tox coverage coveralls
 
