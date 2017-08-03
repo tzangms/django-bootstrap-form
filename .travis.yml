@@ -6,14 +6,16 @@ env:
     - TOX_ENV=py27-dj16
     - TOX_ENV=py27-dj17
     - TOX_ENV=py27-dj18
+    - TOX_ENV=py27-dj19
+    - TOX_ENV=py27-dj110
+    - TOX_ENV=py27-dj111
     - TOX_ENV=py34-dj15
     - TOX_ENV=py34-dj16
     - TOX_ENV=py34-dj17
     - TOX_ENV=py34-dj18
-
-python:
-  - "2.7"
-  - "3.4"
+    - TOX_ENV=py34-dj19
+    - TOX_ENV=py34-dj110
+    - TOX_ENV=py34-dj111
 
 install:
   - pip install tox coverage coveralls
