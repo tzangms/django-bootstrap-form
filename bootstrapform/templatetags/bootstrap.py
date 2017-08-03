@@ -79,11 +79,8 @@ def render(element, markup_classes):
             context = {'form': element, 'classes': markup_classes}
 
 
-    if django_version < (1, 11):
+    if django_version < (1, 8):
         context = Context(context)
-
-    if django_version >= (1, 8):
-        context = context.flatten()
 
     return template.render(context)
 
