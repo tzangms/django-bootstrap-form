@@ -17,6 +17,14 @@ Twitter Bootstrap for Django Form.
 
 A simple Django template tag to work with `Bootstrap <http://getbootstrap.com/>`_
 
+Installation
+======
+
+Install django-bootstrap-form with pip
+
+.. code-block:: sh
+
+    $ pip install django-bootstrap-form
 
 Usage
 ======
