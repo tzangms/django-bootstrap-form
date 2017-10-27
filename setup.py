@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 from bootstrapform.meta import VERSION
 
 setup(
-    name='django-bootstrap-form',
+    name='polyconseil-django-bootstrap-form',
     version=str(VERSION),
     description="django-bootstrap-form",
     classifiers=[
@@ -19,13 +19,13 @@ setup(
     keywords='bootstrap,django',
     author='tzangms',
     author_email='tzangms@gmail.com',
-    url='http://github.com/tzangms/django-bootstrap-form',
+    url='http://github.com/polyconseil/django-bootstrap-form',
     license='MIT',
     test_suite='runtests.runtests',
     install_requires = [
         "django>=1.5",
     ],
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests*']),
     include_package_data=True,
     zip_safe=False,
 )
