@@ -78,7 +78,13 @@ For custom layout - use {% bootstrap %} tag - each line in it represent bootstra
 	<form class="form-horizontal">
 	    <legend>Form Title</legend>
 	    {% csrf_token %}
-	    {{ form|bootstrap_horizontal }}
+	    {% bootstrap form %}
+		char_field choice_field radio_choice
+		multiple_choice multiple_checkbox
+		file_fied password_field
+		textarea
+		boolean_field
+	    {% endbootstrap %}
 	    <div class="form-group">
 	      <div class="col-sm-10 col-sm-offset-2">
 	      	<button type="submit" class="btn btn-primary">Submit</button>
