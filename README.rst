@@ -79,9 +79,9 @@ For custom layout - use {% bootstrap %} tag - each line in it represent bootstra
 	    <legend>Form Title</legend>
 	    {% csrf_token %}
 	    {% bootstrap form %}
-		char_field choice_field radio_choice
-		multiple_choice multiple_checkbox
-		file_fied password_field
+		char_field choice_field 
+		radio_choice multiple_choice multiple_checkbox
+		password_field file_fied
 		textarea
 		boolean_field
 	    {% endbootstrap %}
@@ -91,6 +91,10 @@ For custom layout - use {% bootstrap %} tag - each line in it represent bootstra
 	      </div>
 	    </div>
 	</form>
+
+Will result layout like this
+
+.. image:: docs/_static/bootstrap_tag.png
 
 Demo
 =====
