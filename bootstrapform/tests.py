@@ -96,7 +96,14 @@ class BootstrapTemplateTagTests(TestCase):
         """
         html = Template(tpl_str).render(Context({'form': form}))
 
-        tpl = os.path.join('fixtures', 'bootstrap_tag.html')
+        if StrictVersion(django.get_version()) >= StrictVersion('1.7'):
+            fixture = 'bootstrap_tag.html'
+        elif StrictVersion(django.get_version()) >= StrictVersion('1.6'):
+            fixture = 'bootstrap_tag_dj16.html'
+        else:
+            fixture = 'bootstrap_tag_old.html'
+
+        tpl = os.path.join('fixtures', fixture)
         with open(os.path.join(TEST_DIR, tpl)) as f:
             content = f.read()
         
