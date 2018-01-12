@@ -1,3 +1,6 @@
+- 2018-01-12:
+  - {% bootstrap %} tag by @vital1k
+
 - 2015-03-09:
 
   - Fix unit test fail with Django 1.7 @nikolas
