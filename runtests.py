@@ -6,7 +6,24 @@ from os.path import dirname, abspath
 
 from django.conf import settings
 
+middleware = (
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    )
 
+
+if django.VERSION < (1, 10):
+    middleware_arg = {
+        'MIDDLEWARE_CLASSES': middleware,
+    }
+else:
+    middleware_arg = {
+        'MIDDLEWARE': middleware,
+    }
 
 settings.configure(
     DATABASES = {
@@ -23,22 +40,22 @@ settings.configure(
         'django.contrib.sites',
         'bootstrapform',
     ],
-    MIDDLEWARE_CLASSES = (
-        'django.contrib.sessions.middleware.SessionMiddleware',
-        'django.middleware.common.CommonMiddleware',
-        'django.middleware.csrf.CsrfViewMiddleware',
-        'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'django.contrib.messages.middleware.MessageMiddleware',
-        'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    ),
     SITE_ID=1,
     DEBUG=False,
     ROOT_URLCONF='',
     TEMPLATES = [  # For >= Django 1.10
-        {'BACKEND': 'django.template.backends.django.DjangoTemplates', 'APP_DIRS': True},
-    ]
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.contrib.auth.context_processors.auth',
+                ],
+            },
+        },
+    ],
+    **middleware_arg
 )
-
 
 
 def runtests(**test_args):
