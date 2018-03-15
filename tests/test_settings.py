@@ -1,4 +1,6 @@
+import django
 import os
+
 local_path = lambda path: os.path.join(os.path.dirname(__file__), path)
 
 DATABASES = {
@@ -10,11 +12,18 @@ DATABASES = {
 
 SITE_ID = 1
 
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-)
+if django.VERSION < (1, 10):
+    MIDDLEWARE_CLASSES = (
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+    )
+else:
+    MIDDLEWARE = (
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+    )
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
@@ -43,5 +52,20 @@ STATICFILES_FINDERS = (
 TEMPLATE_DIRS = (
     local_path('templates'),
 )
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'DIRS': [
+            local_path('templates'),
+        ],
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+            ],
+        },
+    },
+]
 
 SECRET_KEY = 'django-bootstrap-form'
