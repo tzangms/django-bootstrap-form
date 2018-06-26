@@ -1,3 +1,4 @@
+import re
 import django
 from django import forms, VERSION as django_version
 from django.template import Context
@@ -46,6 +47,7 @@ def bootstrap_horizontal(element, label_cols='col-sm-2 col-lg-2'):
         markup_classes['value'] += ' ' + '-'.join(splitted_class)
 
     return render(element, markup_classes)
+
 
 @register.filter
 def add_input_classes(field):
@@ -132,10 +134,7 @@ class Bootstrap(template.Node):
         return ''.join(self._get_rows(tag_contents))
 
     def _get_rows(self, tag_contents):
-        for i in tag_contents.splitlines():
-            row = i.strip()
-            if not row:
-                continue
+        for row in self._parse_fields(tag_contents):
             output = [
                 '<div class="row">',
                 ''.join(self._get_fields(row)),
@@ -144,11 +143,29 @@ class Bootstrap(template.Node):
             yield ''.join(output)
 
     def _get_fields(self, row):
-        field_names = [i.strip() for i in row.split(' ') if i.strip()]
-        col_class = 'col-%d' % (12 // len(field_names))
-        for f in field_names:
+        for f, size in row:
+            col_class = 'col'
+            if size:
+                col_class += '-md-' + size
             try:
                 f = self.form[f]
             except KeyError as e:
                 raise Exception('Failed to process line\n{}\n{}'.format(row, e))
             yield '<div class="{}">{}</div>'.format(col_class, bootstrap(f))
+    
+    def _parse_fields(self, tag_contents):
+        result = []
+        for line in tag_contents.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            field_names = [i.strip() for i in line.split(' ') if i.strip()]
+            row = []
+            for name in field_names:
+                if '(' in name:
+                    name, col_size = re.findall(r'^(.*?)\((\d+)\)$', name)[0]
+                else:
+                    col_size = None
+                row.append((name, col_size))
+            result.append(row)
+        return result
