@@ -58,7 +58,9 @@ def add_input_classes(field):
 def render(element, markup_classes):
     element_type = element.__class__.__name__.lower()
 
-    if element_type == 'boundfield':
+    if element == "":
+        return None
+    elif element_type == 'boundfield':
         add_input_classes(element)
         template = get_template("bootstrapform/field.html")
         context = {'field': element, 'classes': markup_classes, 'form': element.form}
