@@ -48,7 +48,7 @@ Then to render your form::
 
 You can also set class="form-vertical" on the form element.
 
-To use class="form-inline" on the form element, also change the "|boostrap" template tag to "|bootstrap_inline".
+To use class="form-inline" on the form element, also change the "|bootstrap" template tag to "|bootstrap_inline".
 
 It is also possible to create a horizontal form. The form class and template tag are both changed, and you will also need slightly different CSS around the submit button::
 
