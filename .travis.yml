@@ -1,7 +1,4 @@
-arch:
-    - amd64
-    - ppc64le
-    
+   
 language: python
 
 matrix:
@@ -76,7 +73,7 @@ matrix:
       env:
         - TOX_ENV=py36-dj20
 
-#######
+#######included code to work on power system
     - python: 2.7
       arch: ppc64le
       env:
