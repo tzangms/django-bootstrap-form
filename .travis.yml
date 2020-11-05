@@ -1,3 +1,7 @@
+arch:
+    - amd64
+    - ppc64le
+    
 language: python
 
 matrix:
@@ -71,6 +75,12 @@ matrix:
     - python: 3.6
       env:
         - TOX_ENV=py36-dj20
+
+allow_failures:
+    - python: 2.7
+      env:
+        - TOX_ENV=py34-dj15
+       
 
 install:
   - pip install tox coverage coveralls
