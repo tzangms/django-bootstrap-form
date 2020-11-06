@@ -1,4 +1,3 @@
-   
 language: python
 
 matrix:
@@ -168,7 +167,7 @@ matrix:
       env:
         - TOX_ENV=py36-dj20
         
-  jobs:
+jobs:
     allow_failures: 
     
     - python: 2.7
@@ -177,17 +176,4 @@ matrix:
         - TOX_ENV=py34-dj15
     - python: 2.7
       env:
-        - TOX_ENV=py34-dj15     
- 
-
-       
-
-install:
-  - pip install tox coverage coveralls
-
-script:
-  #- coverage run --source=bootstrapform setup.py test
-  - tox -e $TOX_ENV
-
-after_success:
-  - coveralls
+        - TOX_ENV=py34-dj15 
