@@ -168,7 +168,7 @@ matrix:
       env:
         - TOX_ENV=py36-dj20
         
-  matrix:
+  jobs:
     allow_failures: 
     
     - python: 2.7
