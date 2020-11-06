@@ -168,14 +168,14 @@ matrix:
       env:
         - TOX_ENV=py36-dj20
         
- matrix:
-  allow_failures: []
-  fast_finish: true
-   - python: 2.7
+  matrix:
+    allow_failures: 
+    
+    - python: 2.7
       arch: ppc64le
       env:
         - TOX_ENV=py34-dj15
-   - python: 2.7
+    - python: 2.7
       env:
         - TOX_ENV=py34-dj15     
  
