@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'django.contrib.auth',
-    'django.contrib.admin',
     'bootstrapform',
 ]
 
