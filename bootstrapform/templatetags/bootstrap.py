@@ -79,9 +79,6 @@ def render(element, markup_classes):
             context = {'form': element, 'classes': markup_classes}
 
 
-    if django_version < (1, 8):
-        context = Context(context)
-
     return template.render(context)
 
 

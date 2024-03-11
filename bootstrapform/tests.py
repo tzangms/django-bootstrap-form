@@ -18,7 +18,6 @@ CHOICES = (
 )
 
 try:
-    # required by Django 1.7 and later
     django.setup()
 except:
     pass
@@ -44,12 +43,10 @@ class BootstrapTemplateTagTests(TestCase):
         html = Template("{% load bootstrap %}{{ form|bootstrap }}").render(Context({'form': form}))
 
 
-        if StrictVersion(django.get_version()) >= StrictVersion('1.7'):
-            fixture = 'basic.html'
-        elif StrictVersion(django.get_version()) >= StrictVersion('1.6'):
-            fixture = 'basic_dj16.html'
+        if StrictVersion(django.get_version()) >= StrictVersion('4.0'):
+            fixture = 'basic_dj40.html'
         else:
-            fixture = 'basic_old.html'
+            fixture = 'basic.html'
 
         tpl = os.path.join('fixtures', fixture)
         with open(os.path.join(TEST_DIR, tpl)) as f:
@@ -62,12 +59,10 @@ class BootstrapTemplateTagTests(TestCase):
 
         html = Template("{% load bootstrap %}{{ form|bootstrap_horizontal }}").render(Context({'form': form}))
 
-        if StrictVersion(django.get_version()) >= StrictVersion('1.7'):
-            fixture = 'horizontal.html'
-        elif StrictVersion(django.get_version()) >= StrictVersion('1.6'):
-            fixture = 'horizontal_dj16.html'
+        if StrictVersion(django.get_version()) >= StrictVersion('4.0'):
+            fixture = 'horizontal_dj40.html'
         else:
-            fixture = 'horizontal_old.html'
+            fixture = 'horizontal.html'
         
         tpl = os.path.join('fixtures', fixture)
         with open(os.path.join(TEST_DIR, tpl)) as f:
