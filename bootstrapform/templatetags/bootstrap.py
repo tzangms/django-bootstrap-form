@@ -10,20 +10,26 @@ register = template.Library()
 
 @register.filter
 def bootstrap(element):
-    markup_classes = {'label': '', 'value': '', 'single_value': ''}
+    markup_classes = {'label': '', 'value': '', 'single_value': '', 'domain': ''}
     return render(element, markup_classes)
 
+@register.filter
+def bootstrap_email(element, domain='example.com'):
+    markup_classes = {'label': '', 'value': '', 'single_value': '', 'domain': domain}
+    element.field.widget.attrs.update({'aria-describedby' : element.id_for_label + '-addon'})
+    element.field.widget.attrs.update({'class'            : 'form-control'                 })
+    return render(element, markup_classes)
 
 @register.filter
 def bootstrap_inline(element):
-    markup_classes = {'label': 'sr-only', 'value': '', 'single_value': ''}
+    markup_classes = {'label': 'sr-only', 'value': '', 'single_value': '', 'domain': ''}
     return render(element, markup_classes)
 
 
 @register.filter
 def bootstrap_horizontal(element, label_cols='col-sm-2 col-lg-2'):
 
-    markup_classes = {'label': label_cols, 'value': '', 'single_value': ''}
+    markup_classes = {'label': label_cols, 'value': '', 'single_value': '', 'domain': ''}
 
     for cl in label_cols.split(' '):
         splitted_class = cl.split('-')
@@ -49,7 +55,8 @@ def bootstrap_horizontal(element, label_cols='col-sm-2 col-lg-2'):
 @register.filter
 def add_input_classes(field):
     if not is_checkbox(field) and not is_multiple_checkbox(field) \
-       and not is_radio(field) and not is_file(field):
+       and not is_radio(field) and not is_file(field) \
+       and not is_email(field):
         field_classes = field.field.widget.attrs.get('class', '')
         field_classes += ' form-control'
         field.field.widget.attrs['class'] = field_classes
@@ -84,6 +91,10 @@ def render(element, markup_classes):
 
     return template.render(context)
 
+@register.filter
+def is_email(field):
+    return isinstance(field.field.widget, forms.EmailInput)
+    
 
 @register.filter
 def is_checkbox(field):
