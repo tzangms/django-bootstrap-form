@@ -12,8 +12,8 @@ TEST_DIR = os.path.abspath(os.path.join(__file__, '..'))
 
 
 CHOICES = (
-    (0, 'Zero'), 
-    (1, 'One'), 
+    (0, 'Zero'),
+    (1, 'One'),
     (2, 'Two'),
 )
 
@@ -22,6 +22,7 @@ try:
     django.setup()
 except:
     pass
+
 
 class ExampleForm(forms.Form):
     char_field = forms.CharField(required=False)
@@ -42,7 +43,6 @@ class BootstrapTemplateTagTests(TestCase):
         form = ExampleForm()
 
         html = Template("{% load bootstrap %}{{ form|bootstrap }}").render(Context({'form': form}))
-
 
         if StrictVersion(django.get_version()) >= StrictVersion('1.7'):
             fixture = 'basic.html'
@@ -80,3 +80,31 @@ class BootstrapTemplateTagTests(TestCase):
 
         self.assertTrue(form.is_bound)
         rendered_template = bootstrap.bootstrap(form['char_field'])
+    
+    def test_bootstrap_tag(self):
+        form = ExampleForm()
+
+        tpl_str = """
+            {% load bootstrap %}
+            {% bootstrap form %}
+                char_field choice_field radio_choice
+                multiple_choice multiple_checkbox
+                file_fied password_field
+                textarea
+                boolean_field
+            {% endbootstrap %}
+        """
+        html = Template(tpl_str).render(Context({'form': form}))
+
+        if StrictVersion(django.get_version()) >= StrictVersion('1.7'):
+            fixture = 'bootstrap_tag.html'
+        elif StrictVersion(django.get_version()) >= StrictVersion('1.6'):
+            fixture = 'bootstrap_tag_dj16.html'
+        else:
+            fixture = 'bootstrap_tag_old.html'
+
+        tpl = os.path.join('fixtures', fixture)
+        with open(os.path.join(TEST_DIR, tpl)) as f:
+            content = f.read()
+        
+        self.assertHTMLEqual(html, content)
