@@ -2,75 +2,30 @@ language: python
 
 matrix:
   include:
-    - python: 2.7
-      env:
-        - TOX_ENV=py27-dj15
-    - python: 2.7
-      env:
-        - TOX_ENV=py27-dj16
-    - python: 2.7
-      env:
-        - TOX_ENV=py27-dj17
-    - python: 2.7
-      env:
-        - TOX_ENV=py27-dj18
-    - python: 2.7
-      env:
-        - TOX_ENV=py27-dj19
-    - python: 2.7
-      env:
-        - TOX_ENV=py27-dj110
-    - python: 2.7
-      env:
-        - TOX_ENV=py27-dj111
-    - python: 2.7
-      env:
-        - TOX_ENV=py34-dj15
-    - python: 3.4
-      env:
-        - TOX_ENV=py34-dj16
-    - python: 3.4
-      env:
-        - TOX_ENV=py34-dj17
-    - python: 3.4
-      env:
-        - TOX_ENV=py34-dj18
-    - python: 3.4
-      env:
-        - TOX_ENV=py34-dj19
-    - python: 3.4
-      env:
-        - TOX_ENV=py34-dj110
-    - python: 3.4
-      env:
-        - TOX_ENV=py34-dj111
-    - python: 3.4
-      env:
-        - TOX_ENV=py34-dj20
-    - python: 3.5
-      env:
-        - TOX_ENV=py35-dj18
-    - python: 3.5
-      env:
-        - TOX_ENV=py35-dj19
-    - python: 3.5
-      env:
-        - TOX_ENV=py35-dj110
-    - python: 3.5
-      env:
-        - TOX_ENV=py35-dj111
-    - python: 3.5
-      env:
-        - TOX_ENV=py35-dj20
-    - python: 3.6
-      env:
-        - TOX_ENV=py36-dj110
-    - python: 3.6
-      env:
-        - TOX_ENV=py36-dj111
     - python: 3.6
       env:
         - TOX_ENV=py36-dj20
+    - python: 3.6
+      env:
+        - TOX_ENV=py36-dj21
+    - python: 3.6
+      env:
+        - TOX_ENV=py36-dj22
+    - python: 3.6
+      env:
+        - TOX_ENV=py36-dj30
+    - python: 3.7
+      env:
+        - TOX_ENV=py37-dj20
+    - python: 3.7
+      env:
+        - TOX_ENV=py37-dj21
+    - python: 3.7
+      env:
+        - TOX_ENV=py37-dj22
+    - python: 3.7
+      env:
+        - TOX_ENV=py37-dj30
 
 install:
   - pip install tox coverage coveralls
