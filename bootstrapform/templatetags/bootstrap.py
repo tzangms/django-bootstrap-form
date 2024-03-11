@@ -1,5 +1,6 @@
 import django
 from django import forms, VERSION as django_version
+from django.contrib.admin import widgets
 from django.template import Context
 from django.template.loader import get_template
 from django import template
@@ -49,7 +50,7 @@ def bootstrap_horizontal(element, label_cols='col-sm-2 col-lg-2'):
 @register.filter
 def add_input_classes(field):
     if not is_checkbox(field) and not is_multiple_checkbox(field) \
-       and not is_radio(field) and not is_file(field):
+       and not is_radio(field) and not is_file(field) and not is_splitdatetime(field):
         field_classes = field.field.widget.attrs.get('class', '')
         field_classes += ' form-control'
         field.field.widget.attrs['class'] = field_classes
@@ -103,3 +104,8 @@ def is_radio(field):
 @register.filter
 def is_file(field):
     return isinstance(field.field.widget, forms.FileInput)
+
+
+@register.filter
+def is_splitdatetime(field):
+    return isinstance(field.field.widget, widgets.AdminSplitDateTime)
